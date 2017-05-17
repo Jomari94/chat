@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
-
+$port = getenv('PORT') ?: '8890';
 $js = <<<JS
 $('#chat-form').submit(function() {
-
+    var port = "$port";
      var form = $(this);
 
      $.ajax({
