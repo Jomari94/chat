@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var socket = io.connect('https://jomari-chat.herokuapp.com:80');
+    var socket = io.connect('https://jomari-chat.herokuapp.com:49190');
 
     socket.on('notification', function (data) {
 
