@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var socket = io.connect();
+    var socket = io();
 
     socket.on('notification', function (data) {
 
