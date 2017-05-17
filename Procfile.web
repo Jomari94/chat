@@ -1,2 +1,2 @@
-apache: bin/heroku-php-apache2 web/
+apache: vendor/bin/heroku-php-apache2 web/
 node: node index.js
