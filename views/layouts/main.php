@@ -10,13 +10,6 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
-$port = getenv('PORT') ?: '8890';
-$js = <<<EOT
-$(document).ready(function() {
-    var port = "$port";
-});
-EOT;
-$this->registerJs($js, \yii\web\View::POS_HEAD)
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
