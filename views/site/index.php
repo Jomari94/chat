@@ -16,20 +16,6 @@ socket.on('chat message', function(msg){
     msg = JSON.parse(msg);
     $('#messages').append($('<li>').text(msg.name + ': ' + msg.message));
 });
-// $('#chat-form').submit(function() {
-//      var form = $(this);
-//
-//      $.ajax({
-//           url: form.attr('action'),
-//           type: 'post',
-//           data: form.serialize(),
-//           success: function (response) {
-//                $("#message-field").val("");
-//           }
-//      });
-//
-//      return false;
-// });
 JS;
 $this->registerJs($js, \yii\web\View::POS_READY)
 ?>
