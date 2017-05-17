@@ -5,9 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 
 $this->title = 'My Yii Application';
-$port = getenv('PORT') ?: '8890';
 $js = <<<JS
-var port = "$port";
 $('#chat-form').submit(function() {
      var form = $(this);
 
