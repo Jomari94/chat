@@ -6,7 +6,7 @@ use yii\helpers\Html;
 
 $this->title = 'My Yii Application';
 $js = <<<JS
-var socket = io(window.location.hostname);
+var socket = io.connect(window.location.hostname);
 $('#chat-form').submit(function(){
       socket.emit('chat message', JSON.stringify({name: $('#name-field').val(), message: $('#message-field').val()}));
       $('#message-field').val('');
