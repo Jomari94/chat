@@ -1,1 +1,1 @@
-web: bin/runsvdir-dyno
+web: vendor/bin/heroku-php-apache2 web/
