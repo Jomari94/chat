@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    var socket = io.connect('http://chat.local:8890');
+    var socket = io.connect('http://localhost:8890');
 
     socket.on('notification', function (data) {
 

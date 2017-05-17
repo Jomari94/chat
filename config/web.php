@@ -39,7 +39,7 @@ $config = [
         ],
         'redis' => [
             'class' => 'yii\redis\Connection',
-            'hostname' => 'localhost',
+            'hostname' => getenv('REDIS_URL') ?: 'localhost',
             'port' => 6379,
             'database' => 0,
         ],
