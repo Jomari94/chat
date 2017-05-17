@@ -6,20 +6,30 @@ use yii\helpers\Html;
 
 $this->title = 'My Yii Application';
 $js = <<<JS
-$('#chat-form').submit(function() {
-     var form = $(this);
-
-     $.ajax({
-          url: form.attr('action'),
-          type: 'post',
-          data: form.serialize(),
-          success: function (response) {
-               $("#message-field").val("");
-          }
-     });
-
-     return false;
+var socket = io();
+$('#chat-form').submit(function(){
+      socket.emit('chat message', JSON.stringify({name: $('#name-field').val(), message: $('#message-field').val()}));
+      $('#message-field').val('');
+      return false;
+    });
+socket.on('chat message', function(msg){
+    msg = JSON.parse(msg);
+    $('#messages').append($('<li>').text(msg.name + ': ' + msg.message));
 });
+// $('#chat-form').submit(function() {
+//      var form = $(this);
+//
+//      $.ajax({
+//           url: form.attr('action'),
+//           type: 'post',
+//           data: form.serialize(),
+//           success: function (response) {
+//                $("#message-field").val("");
+//           }
+//      });
+//
+//      return false;
+// });
 JS;
 $this->registerJs($js, \yii\web\View::POS_READY)
 ?>
@@ -38,6 +48,7 @@ $this->registerJs($js, \yii\web\View::POS_READY)
                     <div class="col-xs-3">
                         <div class="form-group">
                             <?= Html::textInput('name', null, [
+                                'id' => 'name-field',
                                 'class' => 'form-control',
                                 'placeholder' => 'Name'
                             ]) ?>
@@ -63,7 +74,7 @@ $this->registerJs($js, \yii\web\View::POS_READY)
 
                 <?= Html::endForm() ?>
 
-                <div id="notifications" ></div>
+                <div id="messages" ></div>
             </div>
         </div>
 
